@@ -2,6 +2,8 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+![Screenshot 2023-06-28 at 12 16 47](https://github.com/johnwayodi/nextjs-rematch-tailwind-sample/assets/10683903/599c1ee4-1b9e-4d17-b155-2bf6822fcaf0)
+
 ## Getting Started
 
 First, run the development server:
