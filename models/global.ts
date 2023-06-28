@@ -43,7 +43,6 @@ export const global = createModel<RootModel>()({
       const response = await axios.get(
         `${API_URL}/feed/onthisday/selected/${payload.date}`
       );
-      console.log("This is current global state", response.data);
       const result = get(response.data, "selected", []);
       dispatch.global.saveFeatured(result);
     },
