@@ -2,6 +2,8 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Information fetched from the [Wikimedia REST API](https://en.wikipedia.org/api/rest_v1/#/)
+
 ![Screenshot 2023-06-29 at 14 10 18](https://github.com/johnwayodi/nextjs-rematch-tailwind/assets/10683903/816d3954-d590-4853-ae97-1f08164986a9)
 
 ## Getting Started
