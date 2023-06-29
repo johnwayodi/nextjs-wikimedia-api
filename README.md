@@ -2,7 +2,9 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-![Screenshot 2023-06-28 at 12 16 47](https://github.com/johnwayodi/nextjs-rematch-tailwind-sample/assets/10683903/599c1ee4-1b9e-4d17-b155-2bf6822fcaf0)
+![Screenshot 2023-06-29 at 14 10 18](https://github.com/johnwayodi/nextjs-rematch-tailwind/assets/10683903/816d3954-d590-4853-ae97-1f08164986a9)
+
+![Screenshot 2023-06-29 at 14 10 46](https://github.com/johnwayodi/nextjs-rematch-tailwind/assets/10683903/7cf846be-25f2-464c-baae-f0e8ec8a1e14)
 
 ## Getting Started
 
