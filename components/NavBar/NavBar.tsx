@@ -1,11 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Row, Typography } from "antd";
+import { Row } from "antd";
 import DateSelector from "../DateSelector/DateSelector";
 
-const { Title } = Typography;
 
 const NavBar: FC = () => {
+
   return (
     <Row className="w-full bg-teal-950">
       <Row className="w-full max-w-screen-2xl mx-auto px-4">

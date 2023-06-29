@@ -1,41 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
-import { format } from 'date-fns'
 import Head from "next/head";
-import { useRouter } from 'next/router';
-import { Inter } from "next/font/google";
-import { Button, Carousel, Typography, Image } from 'antd';
-import { Feed } from "@/components";
-import { Dispatch, RootState } from "@/models";
-
-const inter = Inter({ subsets: ["latin"] });
-
-const { Title } = Typography;
+import { Button, Carousel, Image, } from 'antd';
+import { Feed, DetailDrawer } from "@/components";
+import { RootState } from "@/models";
+import { FeaturedArticle } from "@/models/global";
 
 const mapState = (state: RootState) => ({
   featured: state.global.featured,
 });
-const mapDispatch = (dispatch: Dispatch) => ({
-  getFeaturedSelected: (date: string) => dispatch.global.getFeaturedSelected({ date }),
-});
 
 type StateProps = ReturnType<typeof mapState>;
-type DispatchProps = ReturnType<typeof mapDispatch>;
-type Props = StateProps & DispatchProps;
+type Props = StateProps;
 
 function Home(props: Props) {
-  const router = useRouter();
-  const [state, setState] = useState<StateProps>({
-    featured: []
-  })
+  const [open, setOpen] = useState(false);
+  const [details, setDetails] = useState<FeaturedArticle>();
 
-  useEffect(() => {
-    const currDate = format(new Date(), 'MM/dd')
-    props.getFeaturedSelected(currDate)
-  }, []);
 
-  const handleNavigate = () => {
-    router.push('/details/123'); // Replace with the actual dynamic page URL
+  const showDetails = (featureYear: number) => {
+    const toView = props.featured.find(item => item.year === featureYear);
+    setDetails(toView)
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -46,7 +36,7 @@ function Home(props: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col w-full max-w-screen-2xl mx-auto">
+      <main className="flex flex-col w-full max-w-screen-2xl mx-auto min-h-screen">
         <Carousel autoplay effect="fade" autoplaySpeed={7000}>
           {props.featured && props.featured.map(featured => (
             <div key={featured.pages[0].pageid}>
@@ -74,16 +64,17 @@ function Home(props: Props) {
                   <div className="py-4">
                     <p className="line-clamp-4 sm:line-clamp-2">{featured.pages[0].extract}</p>
                   </div>
-                  <Button className="w-fit my-2 ml-auto mr-2" type="text">Read More</Button>
+                  <Button className="w-fit my-2 ml-auto mr-2 bg-teal-950 text-white" type="text" onClick={() => showDetails(featured.year)}>Read More</Button>
                 </div>
               </div>
             </div>
           ))}
         </Carousel>
-        <Feed heading="Highlights" featured={props.featured}></Feed>
+        <Feed heading="Highlights" featured={props.featured} />
+        <DetailDrawer details={details} onClose={onClose} open={open} />
       </main>
     </>
   );
 }
 
-export default connect(mapState, mapDispatch)(Home);
+export default connect(mapState)(Home);

@@ -1,36 +1,46 @@
-import { useRouter } from "next/router";
-import React, { FC, useState, useEffect } from "react";
-import { AutoComplete, DatePicker, DatePickerProps, Row, Typography } from "antd";
+import { connect } from "react-redux";
+import dayjs from 'dayjs';
+import React, { useState, useEffect } from "react";
+import { DatePicker, DatePickerProps, Row } from "antd";
+import { Dispatch, RootState } from "@/models";
 
-import styles from "./DateSelector.module.scss";
+const mapState = (state: RootState) => ({
+  featured: state.global.featured,
+});
 
-interface Props {
-}
+const mapDispatch = (dispatch: Dispatch) => ({
+  getFeaturedSelected: (date: string) => dispatch.global.getFeaturedSelected({ date }),
+});
 
-const { Option } = AutoComplete;
-const { Text } = Typography;
+type StateProps = ReturnType<typeof mapState>;
+type DispatchProps = ReturnType<typeof mapDispatch>;
+type Props = StateProps & DispatchProps;
 
-const sortOptions = [
-  { value: "todayCases", text: "New Cases" },
-  { value: "todayDeaths", text: "New Deaths" },
-  { value: "cases", text: "Total Cases" },
-  { value: "deaths", text: "Total Deaths" },
-];
+const dateFormat = "DD MMM YYYY";
 
-const DateSelector: FC<Props> = () => {
-  const router = useRouter();
+function DateSelector(props: Props) {
+  const [currTime, setcurrTime] = useState(dayjs());
 
-  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
+
+  const onChange: DatePickerProps['onChange'] = (date) => {
+    setcurrTime(dayjs(date))
   };
 
+  useEffect(() => {
+    const currDate = currTime.format('MM/DD')
+    props.getFeaturedSelected(currDate)
+  }, []);
+
+  useEffect(() => {
+    const currDate = currTime.format('MM/DD')
+    props.getFeaturedSelected(currDate)
+  }, [currTime]);
+
   return (
-    <Row className={styles.dateSection}>
-      <Row className={styles.dateBar}>
-        <DatePicker onChange={onChange} />
-      </Row>
+    <Row className="w-48 py-4 pl-4">
+      <DatePicker defaultValue={currTime} onChange={onChange} format={dateFormat} />
     </Row>
   );
 };
 
-export default DateSelector;
+export default connect(mapState, mapDispatch)(DateSelector);
