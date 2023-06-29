@@ -4,7 +4,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Information fetched from the [Wikimedia REST API](https://en.wikipedia.org/api/rest_v1/#/)
 
-![Screenshot 2023-06-29 at 14 10 18](https://github.com/johnwayodi/nextjs-rematch-tailwind/assets/10683903/816d3954-d590-4853-ae97-1f08164986a9)
+![Screenshot 2023-06-29 at 14 34 48](https://github.com/johnwayodi/nextjs-rematch-tailwind/assets/10683903/5faeaa4b-356b-466e-9574-f06691973eae)
+
+![Screenshot 2023-06-29 at 14 36 54](https://github.com/johnwayodi/nextjs-rematch-tailwind/assets/10683903/40f4c438-98e8-42c1-bc1c-5ec58ff628d8)
 
 ## Getting Started
 
