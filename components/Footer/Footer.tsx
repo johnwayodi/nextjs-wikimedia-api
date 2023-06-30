@@ -1,8 +1,6 @@
 import { FC } from "react";
-import { Row, Typography } from "antd";
+import { Row } from "antd";
 import Link from "next/link";
-
-const { Title, Text } = Typography;
 
 interface Props { }
 

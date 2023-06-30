@@ -27,7 +27,7 @@ function DetailDrawer(props: Props) {
       title={`On This Day ${props.details?.year}`}
       placement={placement}
       headerStyle={headingStyles}
-      contentWrapperStyle={contentStyles}
+      bodyStyle={contentStyles}
       width={500}
       height="93%"
       onClose={props.onClose}
