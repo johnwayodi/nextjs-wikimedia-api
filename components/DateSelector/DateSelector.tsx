@@ -1,46 +1,53 @@
 import { connect } from "react-redux";
-import dayjs from 'dayjs';
-import React, { useState, useEffect } from "react";
-import { DatePicker, DatePickerProps, Row } from "antd";
+import dayjs from "dayjs";
+import React, { useEffect } from "react";
+import { DatePicker, DatePickerProps, Typography } from "antd";
 import { Dispatch, RootState } from "@/models";
+import { DATE_FORMAT } from "@/utils";
 
 const mapState = (state: RootState) => ({
   featured: state.global.featured,
+  selectedDate: state.global.selectedDate,
 });
 
+const { Text } = Typography;
+
 const mapDispatch = (dispatch: Dispatch) => ({
-  getFeaturedSelected: (date: string) => dispatch.global.getFeaturedSelected({ date }),
+  getFeaturedSelected: (date: dayjs.Dayjs) =>
+    dispatch.global.getFeaturedSelected({ date }),
+  updateDate: (date: dayjs.Dayjs) => dispatch.global.setSelectedDate({ date }),
 });
 
 type StateProps = ReturnType<typeof mapState>;
 type DispatchProps = ReturnType<typeof mapDispatch>;
 type Props = StateProps & DispatchProps;
 
-const dateFormat = "DD MMM YYYY";
-
 function DateSelector(props: Props) {
-  const [currTime, setcurrTime] = useState(dayjs());
-
-
-  const onChange: DatePickerProps['onChange'] = (date) => {
-    setcurrTime(dayjs(date))
+  const onChange: DatePickerProps["onChange"] = (date) => {
+    if (date) {
+      props.updateDate(date);
+    }
   };
 
   useEffect(() => {
-    const currDate = currTime.format('MM/DD')
-    props.getFeaturedSelected(currDate)
+    const currDate = dayjs();
+    props.updateDate(currDate);
   }, []);
 
   useEffect(() => {
-    const currDate = currTime.format('MM/DD')
-    props.getFeaturedSelected(currDate)
-  }, [currTime]);
+    props.getFeaturedSelected(props.selectedDate);
+  }, [props.selectedDate]);
 
   return (
-    <Row className="w-48 py-4 pl-4">
-      <DatePicker defaultValue={currTime} onChange={onChange} format={dateFormat} />
-    </Row>
+    <div className="w-fit px-4 flex flex-row items-center">
+      <Text className="hidden sm:block pr-2">Select Date:</Text>
+      <DatePicker
+        value={props.selectedDate}
+        onChange={onChange}
+        format={DATE_FORMAT}
+      />
+    </div>
   );
-};
+}
 
 export default connect(mapState, mapDispatch)(DateSelector);
