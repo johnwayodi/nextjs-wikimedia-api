@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { Affix } from 'antd';
+import { Affix } from "antd";
 import Navbar from "./NavBar/NavBar";
 import Footer from "./Footer/Footer";
-
 
 export default function Layout({ children }: any) {
   return (

@@ -36,7 +36,7 @@ const Feed: FC<Props> = ({ heading, featured }) => {
           featured.map((feature) => (
             <div
               key={feature.pages[0].pageid}
-              className="w-11/12 sm:w-80 my-4 mx-auto sm:mx-4 cursor-pointer hover:scale-105 shadow hover:shadow-[#43c59e] hover:rounded-2xl"
+              className="w-11/12 sm:w-80 my-4 mx-auto sm:mx-4 cursor-pointer hover:scale-105 shadow hover:shadow-[#43c59e] hover:rounded-2xl duration-200"
               onClick={() => showDetails(feature.year)}
             >
               <Image
