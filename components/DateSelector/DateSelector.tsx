@@ -42,6 +42,7 @@ function DateSelector(props: Props) {
     <div className="w-fit px-4 flex flex-row items-center">
       <Text className="hidden sm:block pr-2">Select Date:</Text>
       <DatePicker
+        inputReadOnly
         value={props.selectedDate}
         onChange={onChange}
         format={DATE_FORMAT}
