@@ -75,7 +75,7 @@ function Home(props: Props) {
                       </div>
                       <div>
                         <Title level={4} className="h-16 py-2 line-clamp-2">
-                          {featured.pages[0].normalizedtitle}
+                          {featured.text}
                         </Title>
                       </div>
                       <div className="h-16 py-2 line-clamp-2">
