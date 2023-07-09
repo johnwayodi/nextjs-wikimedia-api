@@ -36,7 +36,10 @@ function Home(props: Props) {
       <Head>
         <title>On This Day</title>
         <meta name="description" content="News and Historical Events." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
