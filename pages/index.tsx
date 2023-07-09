@@ -21,8 +21,10 @@ function Home(props: Props) {
   const [open, setOpen] = useState(false);
   const [details, setDetails] = useState<FeaturedArticle>();
 
-  const showDetails = (featureYear: number) => {
-    const toView = props.featured.find((item) => item.year === featureYear);
+  const showDetails = (selected: FeaturedArticle) => {
+    const toView = props.featured.find(
+      (item) => item.year === selected.year && item.text === selected.text
+    );
     setDetails(toView);
     setOpen(true);
   };
@@ -96,7 +98,7 @@ function Home(props: Props) {
                       <Button
                         className="w-fit my-2 ml-auto mr-2 bg-[#386641]"
                         type="text"
-                        onClick={() => showDetails(featured.year)}
+                        onClick={() => showDetails(featured)}
                       >
                         Read More
                       </Button>

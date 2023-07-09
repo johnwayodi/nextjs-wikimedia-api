@@ -16,8 +16,10 @@ const Feed: FC<Props> = ({ heading, featured }) => {
   const [open, setOpen] = useState(false);
   const [details, setDetails] = useState<FeaturedArticle>();
 
-  const showDetails = (featureYear: number) => {
-    const toView = featured.find((item) => item.year === featureYear);
+  const showDetails = (feature: FeaturedArticle) => {
+    const toView = featured.find(
+      (item) => item.year === feature.year && item.text === feature.text
+    );
     setDetails(toView);
     setOpen(true);
   };
@@ -37,7 +39,7 @@ const Feed: FC<Props> = ({ heading, featured }) => {
             <div
               key={feature.pages[0].pageid}
               className="w-11/12 sm:w-80 my-4 mx-auto sm:mx-4 cursor-pointer hover:scale-105 shadow hover:shadow-[#43c59e] hover:rounded-2xl duration-200"
-              onClick={() => showDetails(feature.year)}
+              onClick={() => showDetails(feature)}
             >
               <Image
                 height={220}
