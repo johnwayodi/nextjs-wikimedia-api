@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Row, Typography } from "antd";
+import { Typography, Affix } from "antd";
 import DateSelector from "../DateSelector/DateSelector";
 import { GithubOutlined } from "@ant-design/icons";
 
@@ -8,6 +8,7 @@ const { Text, Title } = Typography;
 
 const NavBar: FC = () => {
   return (
+    <Affix offsetTop={0}>
     <div className="w-full bg-[#386641] h-16">
       <div className="h-full w-full max-w-screen-2xl mx-auto px-4 flex flex-row items-center divide-x">
         <Link href="/" className="pt-2 pr-2">
@@ -28,6 +29,7 @@ const NavBar: FC = () => {
         </div>
       </div>
     </div>
+    </Affix>
   );
 };
 

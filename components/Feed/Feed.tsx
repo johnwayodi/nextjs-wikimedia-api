@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { Image, Typography } from "antd";
 import { ClockCircleOutlined, FileTextOutlined } from "@ant-design/icons";
 

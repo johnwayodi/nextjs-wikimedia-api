@@ -47,12 +47,12 @@ function Home(props: Props) {
 
       {props.isLoading && <Loading />}
       {!props.isLoading && (
-        <main className="flex flex-col w-full max-w-screen-2xl mx-auto min-h-screen">
+        <div className="flex flex-col w-full max-w-screen-2xl mx-auto min-h-screen">
           <Carousel
             autoplay
             effect="fade"
             autoplaySpeed={7000}
-            dotPosition="top"
+            dots={false}
           >
             {props.featured &&
               props.featured.map((featured) => (
@@ -109,7 +109,7 @@ function Home(props: Props) {
           </Carousel>
           <Feed heading="Highlights" featured={props.featured} />
           <DetailDrawer details={details} onClose={onClose} open={open} />
-        </main>
+        </div>
       )}
     </Layout>
   );
