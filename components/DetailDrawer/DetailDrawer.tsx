@@ -64,7 +64,7 @@ function DetailDrawer(props: Props) {
         {props.details &&
           props.details.pages.map((page) => (
             <div key={page.pageid}>
-              <div className="mx-4 my-4 flex h-fit flex-col rounded-2xl border border-solid border-stone-300 shadow-lg sm:mt-8 sm:flex-row">
+              <div className="mx-4 my-4 flex h-fit flex-col rounded-2xl shadow-lg shadow-indigo-500/50 sm:mt-8 sm:flex-row">
                 <div className="h-fit w-full max-w-md p-0 sm:h-96 sm:w-2/5">
                   <Image
                     height="100%"
