@@ -1,7 +1,7 @@
-import { init, Models, RematchDispatch, RematchRootState } from "@rematch/core";
-import loadingPlugin, { ExtraModelsFromLoading } from "@rematch/loading";
+import { init, Models, RematchDispatch, RematchRootState } from '@rematch/core';
+import loadingPlugin, { ExtraModelsFromLoading } from '@rematch/loading';
 
-import { global } from "./global";
+import { global } from './global';
 
 export interface RootModel extends Models<RootModel> {
   global: typeof global;

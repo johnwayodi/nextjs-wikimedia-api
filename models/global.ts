@@ -1,9 +1,9 @@
-import axios from "axios";
-import { get } from "lodash";
-import { createModel } from "@rematch/core";
-import { RootModel } from "@/models";
-import { API_URL, DATE_FORMAT } from "@/utils";
-import dayjs from "dayjs";
+import axios from 'axios';
+import { get } from 'lodash';
+import { createModel } from '@rematch/core';
+import { RootModel } from '@/models';
+import { API_URL, DATE_FORMAT } from '@/utils';
+import dayjs from 'dayjs';
 
 export type Article = {
   pageid: number;
@@ -49,11 +49,11 @@ export const global = createModel<RootModel>()({
     },
     // use async/await for async actions
     async getFeaturedSelected(payload: { date: dayjs.Dayjs }, state) {
-      const formattedDate = payload.date.format("MM/DD");
+      const formattedDate = payload.date.format('MM/DD');
       const response = await axios.get(
         `${API_URL}/feed/onthisday/selected/${formattedDate}`
       );
-      const result = get(response.data, "selected", []);
+      const result = get(response.data, 'selected', []);
       dispatch.global.saveFeatured(result);
     },
   }),

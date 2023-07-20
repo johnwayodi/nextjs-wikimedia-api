@@ -1,0 +1,12 @@
+.next
+.github
+node_modules/
+README.md
+.eslintrc.json
+.prettierrc.json
+jest.config.js
+tsconfig.build.json
+tsconfig.json
+package-lock.json
+yarn.lock
+package.json

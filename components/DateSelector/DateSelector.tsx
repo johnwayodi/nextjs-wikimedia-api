@@ -1,9 +1,9 @@
-import { connect } from "react-redux";
-import dayjs from "dayjs";
-import React, { useEffect } from "react";
-import { DatePicker, DatePickerProps, Typography } from "antd";
-import { Dispatch, RootState } from "@/models";
-import { DATE_FORMAT } from "@/utils";
+import { connect } from 'react-redux';
+import dayjs from 'dayjs';
+import React, { useEffect } from 'react';
+import { DatePicker, DatePickerProps, Typography } from 'antd';
+import { Dispatch, RootState } from '@/models';
+import { DATE_FORMAT } from '@/utils';
 
 const mapState = (state: RootState) => ({
   featured: state.global.featured,
@@ -23,7 +23,7 @@ type DispatchProps = ReturnType<typeof mapDispatch>;
 type Props = StateProps & DispatchProps;
 
 function DateSelector(props: Props) {
-  const onChange: DatePickerProps["onChange"] = (date) => {
+  const onChange: DatePickerProps['onChange'] = (date) => {
     if (date) {
       props.updateDate(date);
     }
@@ -39,8 +39,8 @@ function DateSelector(props: Props) {
   }, [props.selectedDate]);
 
   return (
-    <div className="w-fit px-4 flex flex-row items-center">
-      <Text className="hidden sm:block pr-2">Select Date:</Text>
+    <div className="flex w-fit flex-row items-center px-4">
+      <Text className="hidden pr-2 sm:block">Select Date:</Text>
       <DatePicker
         inputReadOnly
         value={props.selectedDate}

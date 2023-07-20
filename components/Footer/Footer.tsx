@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Row, Typography } from "antd";
-import Link from "next/link";
-import { GithubOutlined } from "@ant-design/icons";
+import { FC } from 'react';
+import { Row, Typography } from 'antd';
+import Link from 'next/link';
+import { GithubOutlined } from '@ant-design/icons';
 
 interface Props {}
 
@@ -9,14 +9,14 @@ const { Text } = Typography;
 
 const Footer: FC<Props> = (props) => {
   return (
-    <Row className="w-full bg-[#386641] h-16">
+    <Row className="h-16 w-full bg-gradient-to-br from-emerald-500 to-purple-300 shadow-md">
       <Link
         href="https://github.com/johnwayodi/nextjs-rematch-tailwind"
         target="blank"
-        className="mx-auto flex flex-row items-center cursor-pointer"
+        className="mx-auto flex cursor-pointer flex-row items-center"
       >
         <Text>View on GitHub</Text>
-        <GithubOutlined rev={undefined} className="text-2xl text-white pl-2" />
+        <GithubOutlined rev={undefined} className="pl-2 text-2xl" />
       </Link>
     </Row>
   );
