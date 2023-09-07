@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { Button, Drawer, Space, Image, Divider, Typography } from 'antd';
 import { FeaturedArticle } from '@/models/global';
 import { RootState } from '@/models';
 
-type StateProps = ReturnType<typeof mapState>;
-interface Props extends StateProps {
+interface Props {
   details?: FeaturedArticle;
   onClose: any;
   open: any;
@@ -23,14 +21,12 @@ const contentStyles: React.CSSProperties = {
 
 const { Title, Text, Paragraph } = Typography;
 
-const mapState = (state: RootState) => ({
-  selectedDate: state.global.selectedDate,
-});
-
 function DetailDrawer(props: Props) {
+  const selectedDate = useSelector((state: RootState) => state.global.selectedDate);
+
   return (
     <Drawer
-      title={`Date: ${props.selectedDate.format('MMMM D')}, ${props.details
+      title={`Date: ${selectedDate.format('MMMM D')}, ${props.details
         ?.year}`}
       placement="bottom"
       headerStyle={headingStyles}
@@ -97,4 +93,4 @@ function DetailDrawer(props: Props) {
   );
 }
 
-export default connect(mapState)(DetailDrawer);
+export default DetailDrawer;
