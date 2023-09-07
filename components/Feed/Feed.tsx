@@ -10,7 +10,7 @@ interface Props {
   featured: Array<FeaturedArticle>;
 }
 
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
 
 const Feed: FC<Props> = ({ heading, featured }) => {
   const [open, setOpen] = useState(false);
@@ -55,7 +55,9 @@ const Feed: FC<Props> = ({ heading, featured }) => {
                 <Text className="font-bold">{feature.year}</Text>
               </div>
               <div className="p-2">
-                <Text>{feature.text}</Text>
+              <Paragraph ellipsis={{ rows: 3 }}>
+                {feature.text}
+              </Paragraph>
               </div>
               <div className="flex w-full flex-row p-2">
                 <FileTextOutlined

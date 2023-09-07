@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
-import React, { useEffect } from 'react';
 import { DatePicker, DatePickerProps, Typography } from 'antd';
 import { Dispatch, RootState } from '@/models';
 import { DATE_FORMAT } from '@/utils';
@@ -12,38 +12,33 @@ const mapState = (state: RootState) => ({
 
 const { Text } = Typography;
 
-const mapDispatch = (dispatch: Dispatch) => ({
-  getFeaturedSelected: (date: dayjs.Dayjs) =>
-    dispatch.global.getFeaturedSelected({ date }),
-  updateDate: (date: dayjs.Dayjs) => dispatch.global.setSelectedDate({ date }),
-});
+function DateSelector() {
+  const dispatch = useDispatch<Dispatch>();
+  const selectedDate = useSelector(
+    (state: RootState) => state.global.selectedDate
+  );
 
-type StateProps = ReturnType<typeof mapState>;
-type DispatchProps = ReturnType<typeof mapDispatch>;
-type Props = StateProps & DispatchProps;
-
-function DateSelector(props: Props) {
   const onChange: DatePickerProps['onChange'] = (date) => {
     if (date) {
-      props.updateDate(date);
+      dispatch.global.setSelectedDate({ date });
     }
   };
 
   useEffect(() => {
-    const currDate = dayjs();
-    props.updateDate(currDate);
+    const currentDate = dayjs();
+    dispatch.global.setSelectedDate({ date: currentDate });
   }, []);
 
   useEffect(() => {
-    props.getFeaturedSelected(props.selectedDate);
-  }, [props.selectedDate]);
+    dispatch.global.getFeaturedSelected({ date: selectedDate });
+  }, [selectedDate]);
 
   return (
     <div className="flex w-fit flex-row items-center px-4">
       <Text className="hidden pr-2 sm:block">Select Date:</Text>
       <DatePicker
         inputReadOnly
-        value={props.selectedDate}
+        value={selectedDate}
         onChange={onChange}
         format={DATE_FORMAT}
       />
@@ -51,4 +46,4 @@ function DateSelector(props: Props) {
   );
 }
 
-export default connect(mapState, mapDispatch)(DateSelector);
+export default DateSelector;
